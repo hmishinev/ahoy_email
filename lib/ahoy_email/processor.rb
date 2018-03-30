@@ -108,6 +108,7 @@ module AhoyEmail
               next if params.any? { |k, _v| k == key } || !options[key.to_sym]
               params << [key, options[key.to_sym]]
             end
+            params << [:token, ahoy_message.token]
             uri.query_values = params
             link["href"] = uri.to_s
           end
